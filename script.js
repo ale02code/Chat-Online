@@ -51,7 +51,8 @@ const htmlCodeStruct = () => {
   const chatName = document.createElement("div");
   const barMenu = document.createElement("i");
 
-  chatName.setAttribute("contenteditable", "true");
+  // chatName.setAttribute("contenteditable", "true");
+  chatName.classList.add("Name-user")
   chatName.innerHTML = "<h2>Agregar</h2>"
   barMenu.classList.add("bi");
   barMenu.classList.add("bi-list");
@@ -99,3 +100,50 @@ const htmlCodeStruct = () => {
 }
 
 htmlCodeStruct();
+
+const menuOptions = () => {
+  const optionsContainer = document.querySelector(".options-container")
+  const optionsContent = document.createElement("div");
+
+  const navegacionContainer = document.querySelector(".navegation");
+  const navegationContent = document.querySelector(".navegation-content");
+  const chatName = document.querySelector(".Name-user");
+  const barMenu = document.querySelector(".bi");
+
+  const optionsBar = document.createElement("div");
+
+  const containerOptions = document.createElement("section");
+  // const changeBackground = document.createElement("div");
+  // const changeNameUser = document.createElement("div");
+  // const changeColorMain = document.createElement("div");
+
+  containerOptions.classList.add("container-options");
+  optionsContent.classList.add("options-content");
+
+  optionsBar.classList.add("options-bar");
+  const titleOptonsBar = document.createElement("h3");
+  const closeOptions = document.createElement("i");
+
+  titleOptonsBar.textContent = "Options";
+  closeOptions.classList.add("bi");
+  closeOptions.classList.add("bi-x-square-fill");
+
+  optionsContainer.appendChild(optionsContent);
+
+  optionsContent.appendChild(optionsBar);
+  optionsBar.appendChild(titleOptonsBar);
+  optionsBar.appendChild(closeOptions);
+
+
+  barMenu.addEventListener("click", () => {
+    optionsContainer.style.display = "flex";
+    optionsContainer.style.alignItems = "center";
+    optionsContainer.style.justifyContent = "center"
+  })
+
+  closeOptions.addEventListener("click", () => {
+    optionsContainer.style.display = "none";
+  })
+}
+
+menuOptions()
