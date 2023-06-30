@@ -33,7 +33,7 @@ body {
 }
 
 .chat-container {
-  background: url(img/background-chat.jpeg) center;
+  background: url(source/img/background-chat.jpeg) center;
   object-fit: cover;
   height: 100%;
   position: relative;

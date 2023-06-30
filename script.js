@@ -41,8 +41,6 @@ const createNewMsg = () => {
       inputMsg.setAttribute("placeholder", "Escribe tu mensaje...");
     }, 2500)
   }
-
-  inputMsg.value = "";
 }
 
 const htmlCodeStruct = () => {
@@ -77,12 +75,27 @@ const htmlCodeStruct = () => {
   contentChat.appendChild(typeSend);
   container.appendChild(typeSend);
 
-  sendButton.addEventListener("click", createNewMsg);
+  function notifications() {
+    Notification.requestPermission(() => {
+      if (Notification.permission == "granted") {
+        new Notification(inputMsg.value);
+        inputMsg.value = "";
+      }
+    })
+  }
+
+  sendButton.addEventListener("click", () => {
+    createNewMsg();
+    notifications();
+  })
 
   inputMsg.addEventListener("keypress", (e) => {
     const keyPress = e.key;
-    if (keyPress == "Enter") createNewMsg();
-  })
+    if (keyPress == "Enter") {
+      createNewMsg();
+      notifications();
+    }
+  });
 }
 
 htmlCodeStruct();
